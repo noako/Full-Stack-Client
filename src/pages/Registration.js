@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Registration() {
+  const histroy = useNavigate();
   const initialValues = {
     username: "",
     password: "",
@@ -23,6 +24,7 @@ function Registration() {
       )
       .then(() => {
         console.log(data);
+        histroy("/login");
       });
   };
   return (
