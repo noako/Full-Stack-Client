@@ -26,9 +26,13 @@ function CreatePost() {
   }, [authState]);
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3001/posts", data, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .post(
+        "https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/posts",
+        data,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then((resp) => {
         console.log("IT WORKED");
         navigate("/");

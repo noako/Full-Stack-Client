@@ -16,9 +16,14 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-    });
+    axios
+      .post(
+        "https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/auth",
+        data
+      )
+      .then(() => {
+        console.log(data);
+      });
   };
   return (
     <div>

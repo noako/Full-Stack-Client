@@ -24,9 +24,12 @@ function Home() {
 
   const updateLikedPosts = () => {
     axios
-      .get("http://localhost:3001/likes", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .get(
+        "https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/likes",
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then((resp) => {
         console.log(resp.data);
         setLikedPosts(
@@ -58,7 +61,7 @@ function Home() {
   const likeAPost = (postId) => {
     axios
       .post(
-        "http://localhost:3001/likes",
+        "https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/likes",
         { postId: postId },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       )

@@ -29,11 +29,14 @@ function App() {
   useEffect(() => {
     console.log("called");
     axios
-      .get("http://localhost:3001/auth/auth", {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      })
+      .get(
+        "https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/auth/auth",
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        }
+      )
       .then((response) => {
         if (response.data.error) {
           setAuthState({ ...authState, status: false });

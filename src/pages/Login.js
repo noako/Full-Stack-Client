@@ -11,10 +11,13 @@ function Login() {
   let history = useNavigate();
   const login = () => {
     axios
-      .post("http://localhost:3001/auth/login", {
-        username: username,
-        password: password,
-      })
+      .post(
+        "https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/auth/login",
+        {
+          username: username,
+          password: password,
+        }
+      )
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error);

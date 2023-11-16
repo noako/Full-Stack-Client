@@ -19,20 +19,28 @@ function Post() {
 
   let { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/${id}`).then((response) => {
-      setPost(response.data);
-    });
+    axios
+      .get(
+        `https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/posts/${id}`
+      )
+      .then((response) => {
+        setPost(response.data);
+      });
 
-    axios.get(`http://localhost:3001/posts/${id}/comments`).then((response) => {
-      setListOfComments(response.data);
-      console.log(listOfComments);
-    });
+    axios
+      .get(
+        `https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/posts/${id}/comments`
+      )
+      .then((response) => {
+        setListOfComments(response.data);
+        console.log(listOfComments);
+      });
   }, []);
 
   const addComment = () => {
     axios
       .post(
-        `http://localhost:3001/comments/`,
+        `https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/comments/`,
         {
           commentBody: newComment,
           PostId: id,
@@ -60,9 +68,12 @@ function Post() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`http://localhost:3001/comments/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        `https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/comments/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         setListOfComments(
           listOfComments.filter((value) => {
@@ -81,7 +92,7 @@ function Post() {
       newValue = prompt("Enter new Text");
     }
     axios.put(
-      `http://localhost:3001/posts/${id}`,
+      `https://full-stack-posts-app-noako-171fec647c1e.herokuapp.com/posts/${id}`,
       { section: section, newValue: newValue },
       {
         headers: { accessToken: localStorage.getItem("accessToken") },
